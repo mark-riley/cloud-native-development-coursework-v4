@@ -21,7 +21,20 @@ $(document).ready(function() {
     //Execute the submit new asset function
     submitNewAsset();
     
-  }); 
+  });
+
+  $.ajax({
+    type: "GET",
+    url: 'https://mcintranet-stage.azurewebsites.net/.auth/me',
+    success: function (response) {
+        console.log(response);
+        Login(response);
+    },
+    error: function () {
+        console.log("Post Failed");
+    }
+
+    });
 });
 
 //A function to submit a new asset to the REST endpoint 
@@ -81,9 +94,9 @@ function getImages(){
  
 }
 
-async function getUserInfo() {
-    const response = await fetch('/.auth/me');
-    const payload = await response.json();
-    const { clientPrincipal } = payload;
-    return clientPrincipal;
-}
+// async function getUserInfo() {
+//     const response = await fetch('/.auth/me');
+//     const payload = await response.json();
+//     const { clientPrincipal } = payload;
+//     return clientPrincipal;
+// }
