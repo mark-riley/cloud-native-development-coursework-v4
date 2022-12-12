@@ -28,7 +28,7 @@ $(document).ready(function() {
     url: 'https://blue-grass-0915a4c03.2.azurestaticapps.net/.auth/me',
     success: function (response) {
         console.log(response);
-        createUploadSegement(response);
+        createUploadSegement(response[0]);
     },
     error: function () {
         console.log("Post Failed");
