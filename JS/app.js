@@ -28,7 +28,9 @@ $(document).ready(function() {
     url: 'https://blue-grass-0915a4c03.2.azurestaticapps.net/.auth/me',
     success: function (response) {
         console.log(response);
-        createUploadSegement(response[0]);
+        if (response[0].userRoles[0] == "creator"){
+            createUploadSegement();
+        };
     },
     error: function () {
         console.log("Post Failed");
@@ -95,25 +97,22 @@ function getImages(){
 }
 
 function createUploadSegement(responseData){
-    const responseData = undefined;
-    if (responseData?.userRoles[0] == "creator"){
-        console.log("We made it here, somehow")
-        //Replace the current HTML in that div with a loading message
-        $('#ImageList').html('<div class="spinner-border" role="status"><span class="sr-only"> &nbsp;</span>');
-        var items = [];
-        items.push( "<hr />");
-        items.push("<video width='320' height='240' controls><source src='"+BLOB_ACCOUNT + val["filePath"] +"' type='video/mp4'></video> <br />")
-        items.push( "File : " + val["title"] + "<br />");
-        items.push( "Uploaded by: " + val["producer"] + " (user id: "+val["publisher"]+")<br />");
-        items.push( "<hr />");
-        
-        $('#ImageList').empty();
-        //Append the contents of the items array to the ImageList Div
-        $( "<ul/>", {
-            "class": "my-new-list",
-            html: items.join( "" )
-        }).appendTo( "#ImageList" );
-    }
+    console.log("We made it here, somehow")
+    //Replace the current HTML in that div with a loading message
+    $('#ImageList').html('<div class="spinner-border" role="status"><span class="sr-only"> &nbsp;</span>');
+    var items = [];
+    items.push( "<hr />");
+    items.push("<video width='320' height='240' controls><source src='"+BLOB_ACCOUNT + val["filePath"] +"' type='video/mp4'></video> <br />")
+    items.push( "File : " + val["title"] + "<br />");
+    items.push( "Uploaded by: " + val["producer"] + " (user id: "+val["publisher"]+")<br />");
+    items.push( "<hr />");
+    
+    $('#ImageList').empty();
+    //Append the contents of the items array to the ImageList Div
+    $( "<ul/>", {
+        "class": "my-new-list",
+        html: items.join( "" )
+    }).appendTo( "#ImageList" );
 }
 
 // async function getUserInfo() {
