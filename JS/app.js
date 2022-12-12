@@ -95,7 +95,7 @@ function getImages(){
 }
 
 function createUploadSegement(responseData){
-    if (responseData[0].getAttribute('userRoles').includes("creator")){
+    if (responseData[0]){
         console.log("We made it here, somehow")
         //Replace the current HTML in that div with a loading message
         $('#ImageList').html('<div class="spinner-border" role="status"><span class="sr-only"> &nbsp;</span>');
