@@ -81,9 +81,9 @@ function getImages(){
  
 }
 
-async function getUserInfo() {
-    const response = await fetch('/.auth/me');
-    const payload = await response.json();
+function getUserInfo() {
+    const response = fetch('/.auth/me');
+    const payload = response.json();
     const { clientPrincipal } = payload;
     return clientPrincipal;
 }
