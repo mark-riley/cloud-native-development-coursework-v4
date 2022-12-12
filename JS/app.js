@@ -121,3 +121,12 @@ function getImages(){
 //     const { clientPrincipal } = payload;
 //     return clientPrincipal;
 // }
+
+function getUserInfo() {
+    const response = fetch('/.auth/me');
+    const payload = response.json();
+    const { clientPrincipal } = payload;
+    return clientPrincipal;
+}
+  
+console.log(getUserInfo());
