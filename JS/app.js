@@ -87,5 +87,3 @@ async function getUserInfo() {
     const { clientPrincipal } = payload;
     return clientPrincipal;
 }
-  
-console.log(await getUserInfo());
