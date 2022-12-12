@@ -122,11 +122,11 @@ function getImages(){
 //     return clientPrincipal;
 // }
 
-function getUserInfo() {
-    const response = fetch('/.auth/me');
-    const payload = response.json();
+async function getUserInfo() {
+    const response = await fetch('/.auth/me');
+    const payload = await response.json();
     const { clientPrincipal } = payload;
     return clientPrincipal;
-}
+  }
   
-console.log(getUserInfo());
+  console.log(await getUserInfo());
